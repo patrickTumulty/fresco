@@ -14,12 +14,13 @@ $ rhc <output-filename> <var-name> <file-path> ...
 `output-filename` - The name of the output header file.
 
 `<var-name> <file-path>` - The `<var-name>` is the name that the byte array will be saved as in the resulting header 
-file. The `<file-path>` is the path to read the byte data from. The `<var-name> <file-path>` can be repeated to include multiple files.
+file. The `<file-path>` is the path to read the byte data from. The `<var-name> <file-path>` pattern can be repeated to
+include multiple files.
 
 ## Example:
 ```bash
-$ rhc data_header.h students students.txt picture1 pic.png
+$ rhc data_header.h animals animals.txt trees trees.csv photo sunset.png
 ```
     
-The above example will output `data_header.h`. This header will have variables `students`, `students_length`, 
-`picture1` and `picture1_length` defined. 
+The above example will output `data_header.h`. This header will have variables `animals`, `animals_length`, 
+`trees`, `trees_length`, `photo` and `photo_length` defined. 

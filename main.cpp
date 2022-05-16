@@ -10,8 +10,12 @@
 #include <queue>
 #include <filesystem>
 
+static int version = 0x0100;
+
 void printHelpExample();
 void processInputFileArguments(std::queue<std::string> &inputQueue, HeaderFileBuilder &writer);
+
+void printVersion();
 
 /**
  * Main
@@ -24,6 +28,9 @@ int main(int argc, char *argv[])
 {
     if (argc == 1 || std::string(argv[1]) == "--help") {
         printHelpExample();
+        return 0;
+    } else if (std::string(argv[1]) == "--version") {
+        printVersion();
         return 0;
     }
 
@@ -55,6 +62,14 @@ int main(int argc, char *argv[])
     FileUtils::writeStringToFile(headerBuilder.getHeaderFileName(), headerBuilder.getFileContents());
 
     return 0;
+}
+
+/**
+ * Print rhc version
+ */
+void printVersion()
+{
+    printf("rhc v%d.%02d\n", 0xff & version >> 8, 0xff & version);
 }
 
 /**
@@ -112,6 +127,6 @@ void printHelpExample()
             "\t                                byte array will be saved as in the resulting header file. The\n"
             "\t                                <file-path> is the path to read the byte data from.\n"
             "Example:\n"
-            "\t$ rhc data_header.h students students.txt picture1 pic.png\n";
+            "\t$ rhc data_header.h animals animals.txt trees trees.csv photo sunset.png\n";
     std::cout << example << std::endl;
 }
