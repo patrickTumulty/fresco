@@ -3,14 +3,15 @@
 //
 
 #include <iostream>
-#include "HeaderFileWriter.h"
+#include "HeaderFileBuilder.h"
 #include "StringUtils.h"
 #include "FileUtils.h"
 #include "Logger.h"
 #include <queue>
+#include "cmake-build-debug/text_data_header.h"
 
 void printHelpExample();
-void processInputFileArguments(std::queue<std::string> &inputQueue, HeaderFileWriter &writer);
+void processInputFileArguments(std::queue<std::string> &inputQueue, HeaderFileBuilder &writer);
 
 /**
  * Main
@@ -36,10 +37,10 @@ int main(int argc, char *argv[])
     std::string outputFilename = inputQueue.front();
     inputQueue.pop();
 
-    HeaderFileWriter writer(outputFilename);
-    writer.appendLine();
-    writer.addInclude("cstdint");
-    writer.appendLine();
+    HeaderFileBuilder headerBuilder(outputFilename);
+    headerBuilder.appendLine();
+    headerBuilder.addInclude("cstdint");
+    headerBuilder.appendLine();
 
     if (inputQueue.size() % 2 != 0)
     {
@@ -47,11 +48,11 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    processInputFileArguments(inputQueue, writer);
+    processInputFileArguments(inputQueue, headerBuilder);
 
-    writer.endFile();
+    headerBuilder.endFile();
 
-    FileUtils::writeStringToFile(outputFilename, writer.getFileContents());
+    FileUtils::writeStringToFile(headerBuilder.getHeaderFileName(), headerBuilder.getFileContents());
 
     return 0;
 }
@@ -64,7 +65,7 @@ int main(int argc, char *argv[])
  * @param[in] inputQueue argument input queue
  * @param[in] writer header file writer
  */
-void processInputFileArguments(std::queue<std::string> &inputQueue, HeaderFileWriter &writer)
+void processInputFileArguments(std::queue<std::string> &inputQueue, HeaderFileBuilder &writer)
 {
     for (int i = 0; i < inputQueue.size(); i++)
     {
