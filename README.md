@@ -7,7 +7,7 @@ in any C or C++ project.
 Each input file will be written in the resulting header file as a `uint8_t` byte array. The length of which will be 
 stored in a length variable; the name of the variable with `_length` appended to it. 
 
-## Input Arguments:
+### Input Arguments:
 ```bash
 $ rhc <output-filename> <var-name> <file-path> ...
 ```
@@ -17,10 +17,25 @@ $ rhc <output-filename> <var-name> <file-path> ...
 file. The `<file-path>` is the path to read the byte data from. The `<var-name> <file-path>` pattern can be repeated to
 include multiple files.
 
-## Example:
+### Example:
 ```bash
 $ rhc data_header.h animals animals.txt trees trees.csv photo sunset.png
 ```
     
 The above example will output `data_header.h`. This header will have variables `animals`, `animals_length`, 
 `trees`, `trees_length`, `photo` and `photo_length` defined. 
+
+## Build Instructions 
+
+Build rhc requires the commonpp utilities library. The following commands will allow you to build rhc. 
+
+```bash
+git clone https://github.com/patrickTumulty/rhc.git
+cd rhc/libs
+git clone https://github.com/patrickTumulty/commonpp.git # Git clone commonpp utilities library 
+cd ..
+mkdir build
+cd build
+cmake ..
+make
+```
