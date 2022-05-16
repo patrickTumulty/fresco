@@ -2,13 +2,13 @@
 // Created by Patrick Tumulty on 5/15/22.
 //
 
-#include <iostream>
 #include "HeaderFileBuilder.h"
 #include "StringUtils.h"
 #include "FileUtils.h"
 #include "Logger.h"
+#include <iostream>
 #include <queue>
-#include "cmake-build-debug/text_data_header.h"
+#include <filesystem>
 
 void printHelpExample();
 void processInputFileArguments(std::queue<std::string> &inputQueue, HeaderFileBuilder &writer);
