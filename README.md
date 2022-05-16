@@ -1,0 +1,1 @@
+# Resource Header Compiler (rhc)
