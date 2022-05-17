@@ -159,7 +159,22 @@ void HeaderFileBuilder::addInclude(const std::string &include)
  */
 void HeaderFileBuilder::writeULongVar(const std::string &variableName, unsigned long number)
 {
-    appendLine("unsigned long " + variableName + " = " + std::to_string(number) + ";");
+    appendLine("const uint64_t " + variableName + " = " + std::to_string(number) + ";");
+}
+
+/**
+ * Write a multiline comment to the current header file builder instance
+ *
+ * @param commentString variable name
+ */
+void HeaderFileBuilder::writeMultilineComment(const std::string &commentString)
+{
+    appendLine("/*");
+    for (const std::string& line : StringUtils::split(commentString, "\n"))
+    {
+        appendLine(" * " + line);
+    }
+    appendLine(" */");
 }
 
 

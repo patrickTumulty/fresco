@@ -22,6 +22,7 @@ public:
 
     void writeArray(const std::string& variableName, uint8_t *data, uint64_t dataLength);
     void writeULongVar(const std::string& variableName, unsigned long number);
+    void writeMultilineComment(const std::string& commentString);
 
     void addInclude(const std::string& include);
     void endFile();
