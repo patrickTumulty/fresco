@@ -34,19 +34,31 @@ std::vector<ArgProcessor> getArgProcessors()
 {
     std::vector<ArgProcessor> processors;
 
-    processors.emplace_back("--version", "", ARG_PROCESSOR_FLAG, [](const std::vector<std::string>& values)
+    processors.emplace_back("--version",
+                            "",
+                            "Print rhc version",
+                            ARG_PROCESSOR_FLAG,
+                            [](const std::vector<std::string>& values)
     {
         printVersion();
         return 0;
     });
 
-    processors.emplace_back("--header", "-h", 1, [](const std::vector<std::string>& values)
+    processors.emplace_back("--header",
+                            "-h",
+                            "Output header file name",
+                            1,
+                            [](const std::vector<std::string>& values)
     {
         outputFilename = values[0];
         return 0;
     });
 
-    processors.emplace_back("--dir", "-d", 1, [](const std::vector<std::string>& values)
+    processors.emplace_back("--dir",
+                            "-d",
+                            "Output directory",
+                            1,
+                            [](const std::vector<std::string>& values)
     {
         outputDirectory = values[0];
 
@@ -59,7 +71,11 @@ std::vector<ArgProcessor> getArgProcessors()
         return 0;
     });
 
-    processors.emplace_back("--files", "-f", ARG_PROCESSOR_FINAL, [](const std::vector<std::string>& values)
+    processors.emplace_back("--files",
+                            "-f",
+                            "Input files. Space separated list. Example: -f key1 file1.txt key2 file2.txt ...",
+                            ARG_PROCESSOR_FINAL,
+                            [](const std::vector<std::string>& values)
     {
         if (values.size() % 2 != 0)
         {
@@ -92,7 +108,14 @@ int main(int argc, char *argv[])
 {
     InputProcessor inputProcessor(getArgProcessors());
 
+    inputProcessor.addDefaultHelpArgProcessor();
+
     inputProcessor.processInputs(argc, argv);
+
+    if (outputFilename.empty() && outputDirectory.empty() && dataItems.empty())
+    {
+        return 0;
+    }
 
     if (verifyInputs() != 0)
     {
