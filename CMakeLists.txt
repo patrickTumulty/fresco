@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(rhc)
+project(fresco)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -14,10 +14,10 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/templates/HeaderTemplate.t
                    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/update_templates.sh
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
 
-add_executable(rhc src/main.cpp
+add_executable(fresco src/main.cpp
                templates/HeaderTemplate.txt
                templates/SourceTemplate.txt
                ${RHC_HEADERS}
                ${RHC_SOURCES})
 
-target_link_libraries(rhc PRIVATE CommonPP)
+target_link_libraries(fresco PRIVATE CommonPP)
