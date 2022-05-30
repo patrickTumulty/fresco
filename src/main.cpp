@@ -23,8 +23,6 @@ static std::string outputFilename;
 static std::string outputDirectory;
 static std::vector<DataItem> dataItems;
 
-
-void printHelpExample();
 void processInputFileArguments(std::vector<DataItem> &headerDataItems, HeaderFileBuilder &writer);
 void printVersion();
 void writeHeaderFile();
@@ -95,36 +93,6 @@ std::vector<ArgProcessor> getArgProcessors()
     });
 
     return processors;
-}
-
-/**
- * Main
- *
- * @param argc argc
- * @param argv argv
- * @return 0 if successful execution
- */
-int main(int argc, char *argv[])
-{
-    InputProcessor inputProcessor(getArgProcessors());
-
-    inputProcessor.addDefaultHelpArgProcessor();
-
-    inputProcessor.processInputs(argc, argv);
-
-    if (outputFilename.empty() && outputDirectory.empty() && dataItems.empty())
-    {
-        return 0;
-    }
-
-    if (verifyInputs() != 0)
-    {
-        return -1;
-    }
-
-    writeHeaderFile();
-
-    return 0;
 }
 
 /**
@@ -222,22 +190,26 @@ void processInputFileArguments(std::vector<DataItem> &headerDataItems, HeaderFil
 }
 
 /**
- * Print help and example info about this program
+ * Main
+ *
+ * @param argc argc
+ * @param argv argv
+ * @return 0 if successful execution
  */
-void printHelpExample()
+int main(int argc, char *argv[])
 {
-    std::string example =
-            "Resource Header Compiler (rhc)\n\n"
-            "\tThe resource header compiler is a simple command line tool used for parsing byte information from\n"
-            "\tvarious files into header file defined byte arrays. The resulting header file can then be included\n"
-            "\tin any C or C++ project.\n\n"
-            "Input Arguments:\n"
-            "\t$ rhc <output-filename> [<var-name> <file-path>, ...]\n\n"
-            "\toutput-filename               : The name of the output header file.\n"
-            "\t[<var-name> <file-path>, ...] : space separated list. The <var-name> is the name that the resulting\n"
-            "\t                                byte array will be saved as in the resulting header file. The\n"
-            "\t                                <file-path> is the path to read the byte data from.\n"
-            "Example:\n"
-            "\t$ rhc data_header.h animals animals.txt trees trees.csv photo sunset.png\n";
-    std::cout << example << std::endl;
+    InputProcessor inputProcessor(getArgProcessors());
+
+    inputProcessor.addDefaultHelpArgProcessor();
+
+    inputProcessor.processInputs(argc, argv);
+
+    if (verifyInputs() != 0)
+    {
+        return -1;
+    }
+
+    writeHeaderFile();
+
+    return 0;
 }
