@@ -7,7 +7,7 @@ PLACEHOLDER_CONTENTS_START
 
 #include <map>
 
-static std::map<std::string, ResourceData> resourceMap;
+static std::map<std::string, Fresco::ResourceData> resourceMap;
 
 /**
  * Initialize resources. This function must be called before called getResourceData()
@@ -38,7 +38,7 @@ int initResources()
  *
  * @return ResourceData struct containing pointer to byte data and byte data length.
  */
-ResourceData getResourceData(const std::string& strId)
+Fresco::ResourceData getResourceData(const std::string& strId)
 {
     if (resourceMap.find(strId) != resourceMap.end())
     {

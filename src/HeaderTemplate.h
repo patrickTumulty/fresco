@@ -8,22 +8,27 @@
 #include "Placeholders.h"
 
 PLACEHOLDER_CONTENTS_START
-PLACEHOLDER_START_NAMESPACE
 
 #include <cstdint>
 #include <string>
 
-struct ResourceData
+namespace Fresco
 {
-    uint8_t *data;
-    uint64_t dataLength;
-};
+    /**
+     * Simple data structure containing byte array and
+     * byte array length for a given resource object
+     */
+    struct ResourceData
+    {
+        uint8_t *data;
+        uint64_t dataLength;
+    };
 
-int initResources();
-ResourceData getResourceData(const std::string& strId);
-int freeResources();
+    int initResources();
+    ResourceData getResourceData(const std::string& strId);
+    int freeResources();
+}
 
-PLACEHOLDER_END_NAMESPACE
 PLACEHOLDER_CONTENTS_END
 
 #endif //RHC_HEADERTEMPLATE_H
