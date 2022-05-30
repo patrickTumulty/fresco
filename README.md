@@ -9,8 +9,8 @@ in any C++ project. This program aims to be a simple solution for compiling stat
 Build rhc requires the commonpp utilities library. The following commands will allow you to build rhc. 
 
 ```bash
-git clone https://github.com/patrickTumulty/rhc.git
-cd rhc/libs
+git clone https://github.com/patrickTumulty/fresco.git
+cd fresco/libs
 git clone https://github.com/patrickTumulty/commonpp.git # Git clone commonpp utilities library 
 cd ..
 mkdir build
