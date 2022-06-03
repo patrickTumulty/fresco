@@ -1,13 +1,14 @@
-R"PREFIX(//
+R"PREFIX(
+//
 // Created by Patrick Tumulty on 5/29/22.
 //
+
 #include "HeaderTemplate.h"
 
 PLACEHOLDER_CONTENTS_START
-
 #include <map>
 
-static std::map<std::string, ResourceData> resourceMap;
+static std::map<std::string, Fresco::ResourceData> resourceMap;
 
 /**
  * Initialize resources. This function must be called before called getResourceData()
@@ -18,8 +19,7 @@ int initResources()
 {
     try
     {
-        PLACEHOLDER_DATA_INIT
-
+PLACEHOLDER_DATA_INIT
         return 0;
     }
     catch ( ... )
@@ -38,7 +38,7 @@ int initResources()
  *
  * @return ResourceData struct containing pointer to byte data and byte data length.
  */
-ResourceData getResourceData(const std::string& strId)
+Fresco::ResourceData getResourceData(const std::string& strId)
 {
     if (resourceMap.find(strId) != resourceMap.end())
     {
@@ -70,5 +70,4 @@ int freeResources()
 
     return 0;
 }
-
 PLACEHOLDER_CONTENTS_END)PREFIX"

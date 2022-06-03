@@ -1,10 +1,11 @@
+
 //
 // Created by Patrick Tumulty on 5/29/22.
 //
+
 #include "HeaderTemplate.h"
 
 PLACEHOLDER_CONTENTS_START
-
 #include <map>
 
 static std::map<std::string, Fresco::ResourceData> resourceMap;
@@ -18,8 +19,7 @@ int initResources()
 {
     try
     {
-        PLACEHOLDER_DATA_INIT
-
+PLACEHOLDER_DATA_INIT
         return 0;
     }
     catch ( ... )
@@ -70,5 +70,4 @@ int freeResources()
 
     return 0;
 }
-
 PLACEHOLDER_CONTENTS_END

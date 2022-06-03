@@ -8,7 +8,6 @@
 #include "Placeholders.h"
 
 PLACEHOLDER_CONTENTS_START
-
 #include <cstdint>
 #include <string>
 
@@ -28,9 +27,7 @@ namespace Fresco
     ResourceData getResourceData(const std::string& strId);
     int freeResources();
 }
-
 PLACEHOLDER_CONTENTS_END
-
 #endif //RHC_HEADERTEMPLATE_H
 
 

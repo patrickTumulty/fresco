@@ -11,6 +11,7 @@ file(GLOB RHC_HEADERS src/*.h)
 file(GLOB RHC_SOURCES src/*.cpp)
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/templates/HeaderTemplate.txt ${CMAKE_CURRENT_SOURCE_DIR}/templates/SourceTemplate.txt
+                   COMMAND rm ${CMAKE_CURRENT_SOURCE_DIR}/templates/*
                    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/update_templates.sh
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
 
