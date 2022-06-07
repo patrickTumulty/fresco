@@ -50,7 +50,7 @@ Fresco::ResourceData getResourceData(const std::string& strId)
 /**
  * Free allocated resources
  *
- * @return 0 is successful execution
+ * @return 0 if successful execution
  */
 int freeResources()
 {

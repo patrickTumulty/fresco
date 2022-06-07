@@ -6,11 +6,11 @@
 #define RHC_TEMPLATES_H
 
 const char *headerTemplate =
-#include "../templates/HeaderTemplate.txt"
+#include "../../../templates/HeaderTemplate.txt"
 ;
 
 const char *sourceTemplate =
-#include "../templates/SourceTemplate.txt"
+#include "../../../templates/SourceTemplate.txt"
 ;
 
 #endif //RHC_TEMPLATES_H

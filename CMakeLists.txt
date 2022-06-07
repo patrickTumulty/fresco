@@ -5,9 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(libs/commonpp)
 
+include_directories(src/headers)
 include_directories(libs/commonpp/headers)
 
-file(GLOB RHC_HEADERS src/*.h)
+file(GLOB RHC_HEADERS src/headers/*.h)
 file(GLOB RHC_SOURCES src/*.cpp)
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/templates/HeaderTemplate.txt ${CMAKE_CURRENT_SOURCE_DIR}/templates/SourceTemplate.txt
