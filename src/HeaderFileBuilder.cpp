@@ -20,8 +20,6 @@
 HeaderFileBuilder::HeaderFileBuilder(const std::string& filename) : CFileBuilder(filename)
 {
     setHeaderFilename();
-
-    writeHeaderGuard();
 }
 
 /**

@@ -16,14 +16,14 @@ class HeaderFileBuilder : public CFileBuilder
 public:
     explicit HeaderFileBuilder(const std::string& filename);
     void endFile();
-
+    void writeHeaderGuard();
 private:
     std::string headerName;
     std::string extension;
     std::string headerDefine;
 
     void setHeaderFilename();
-    void writeHeaderGuard();
+
 };
 
 

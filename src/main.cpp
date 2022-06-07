@@ -2,7 +2,6 @@
 // Created by Patrick Tumulty on 5/15/22.
 //
 
-#include "HeaderFileBuilder.h"
 #include "FileUtils.h"
 #include "Logger.h"
 #include "ArgProcessor.h"

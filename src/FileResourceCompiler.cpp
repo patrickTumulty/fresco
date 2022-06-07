@@ -4,7 +4,6 @@
 
 #include "FileResourceCompiler.h"
 #include "HeaderFileBuilder.h"
-#include "SourceFileBuilder.h"
 #include "FileUtils.h"
 #include "Logger.h"
 #include "StringUtils.h"
@@ -40,7 +39,10 @@ void FileResourceCompiler::composeCommentString()
 
 void FileResourceCompiler::generateHeaderFileContents()
 {
+    headerFileBuilder.appendLine();
     headerFileBuilder.writeMultilineComment(commentString);
+    headerFileBuilder.appendLine();
+    headerFileBuilder.writeHeaderGuard();
     headerFileBuilder.appendLine();
     StringUtils::trim(headerTemplateString);
     headerFileBuilder.appendLine(headerTemplateString);
@@ -79,7 +81,9 @@ std::string FileResourceCompiler::trimTemplateString(const std::string &s)
 
 void FileResourceCompiler::generateSourceFileContents()
 {
+    sourceFileBuilder.appendLine();
     sourceFileBuilder.writeMultilineComment(commentString);
+    sourceFileBuilder.appendLine();
     sourceFileBuilder.addInclude(resourceName.append(".h"));
 
     std::string declarations;

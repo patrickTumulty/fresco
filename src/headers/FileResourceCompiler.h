@@ -7,7 +7,6 @@
 
 #include <string>
 #include <map>
-#include "SourceFileBuilder.h"
 #include "HeaderFileBuilder.h"
 
 static int version = 0x010000; // v1.00.00
@@ -26,7 +25,7 @@ private:
     std::map<std::string, std::string> nameFileMap;
     std::string headerTemplateString;
     std::string sourceTemplateString;
-    SourceFileBuilder sourceFileBuilder;
+    CFileBuilder sourceFileBuilder;
     HeaderFileBuilder headerFileBuilder;
     std::string commentString;
 
