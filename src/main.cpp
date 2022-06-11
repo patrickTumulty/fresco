@@ -136,7 +136,11 @@ int main(int argc, char *argv[])
 
     inputProcessor.addDefaultHelpArgProcessor();
     inputProcessor.setHelperHeader(getHelperHeaderString());
-    inputProcessor.setHelperFooter(getHelperFooterString());
+    const char *footer = getHelperFooterString();
+    size_t footerLen = std::strlen(footer) + 8 + 1;
+    char footerBuffer[footerLen];
+    snprintf(footerBuffer, footerLen, footer, FileResourceCompiler::getVersionString().c_str());
+    inputProcessor.setHelperFooter(footerBuffer);
     inputProcessor.processInputs(argc, argv);
 
     if (verifyInputs() != 0)
@@ -156,7 +160,7 @@ int main(int argc, char *argv[])
 const char *getHelperFooterString()
 {
     return "\n \n"
-           "Version  : v1.00.00\n"
+           "Version  : %s\n"
            "GitHub   : https://github.com/patrickTumulty/fresco\n";
 }
 
