@@ -13,7 +13,8 @@
 
 #include <utility>
 #include <iostream>
-#include <strstream>
+#include <sstream>
+#include <filesystem>
 
 FileResourceCompiler::FileResourceCompiler(std::string outputName,
                                            std::map<std::string, std::string> fileMap) : resourceName(std::move(outputName)),
@@ -28,7 +29,7 @@ FileResourceCompiler::FileResourceCompiler(std::string outputName,
 
 void FileResourceCompiler::composeCommentString()
 {
-    std::strstream ss;
+    std::stringstream ss;
     ss << "This file was generated using fresco. The file resource compiler.\n";
     ss << "Compile Date   : " << TimeUtils::getDateString() << "\n";
     ss << "Fresco Version : " << getVersionString() << "\n";
@@ -153,7 +154,7 @@ std::string FileResourceCompiler::getMultilineByteString(const char *data, uint6
 std::string FileResourceCompiler::getVersionString()
 {
     char versionString[9];
-    snprintf(versionString, 9, "v%d.%02d.%02d\n", 0xff & version >> 16, 0xff & version >> 8, 0xff & version);
+    snprintf(versionString, 9, "v%1d.%02d.%02d", 0xff & version >> 16, 0xff & version >> 8, 0xff & version);
     return { versionString };
 }
 
