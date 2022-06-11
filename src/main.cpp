@@ -8,6 +8,7 @@
 #include "InputProcessor.h"
 #include "FileResourceCompiler.h"
 
+#include <cstring>
 #include <queue>
 #include <filesystem>
 #include <map>
