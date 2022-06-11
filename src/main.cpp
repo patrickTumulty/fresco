@@ -11,6 +11,7 @@
 #include <queue>
 #include <filesystem>
 #include <map>
+#include <cstring>
 
 
 static std::string outputFilename;
