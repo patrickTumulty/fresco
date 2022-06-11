@@ -9,7 +9,7 @@
 #include <map>
 #include "HeaderFileBuilder.h"
 
-static int version = 0x010000; // v1.00.00
+static int version = 0x010100; // v1.00.00
 
 class FileResourceCompiler
 {
